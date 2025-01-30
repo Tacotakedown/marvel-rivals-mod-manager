@@ -9,6 +9,7 @@ use tauri::{AppHandle, Emitter, Manager, Runtime};
 pub struct ModManagerConfig {
     pub game_path: String,
     pub mods_enabled: Vec<String>,
+    pub discord_id: String,
 }
 
 impl Default for ModManagerConfig {
@@ -16,6 +17,7 @@ impl Default for ModManagerConfig {
         Self {
             game_path: String::new(),
             mods_enabled: Vec::new(),
+            discord_id: String::new(),
         }
     }
 }
@@ -121,6 +123,15 @@ impl ConfigManager {
         self.save(app_handle)
     }
 
+    pub fn set_discord_id<R: Runtime>(
+        &mut self,
+        app_handle: &AppHandle<R>,
+        discord_id: String,
+    ) -> Result<(), ModManagerError> {
+        self.config.discord_id = discord_id;
+        self.save(app_handle)
+    }
+
     pub fn add_enabled_mod<R: Runtime>(
         &mut self,
         app_handle: &AppHandle<R>,
@@ -172,4 +183,13 @@ pub async fn toggle_mod<R: Runtime>(
     } else {
         config_manager.remove_enabled_mod(&app_handle, &mod_id)
     }
+}
+
+#[tauri::command]
+pub async fn set_discord_id<R: Runtime>(
+    app_handle: AppHandle<R>,
+    discord_id: String,
+) -> Result<(), ModManagerError> {
+    let mut config_manager = ConfigManager::new(&app_handle)?;
+    Ok(config_manager.set_discord_id(&app_handle, discord_id)?)
 }
