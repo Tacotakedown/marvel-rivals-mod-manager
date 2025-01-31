@@ -1,9 +1,10 @@
+"use client";
 import { invoke } from "@tauri-apps/api/core";
 import { useState } from "react";
-import { useModManagerContext } from "../../util/ModManagerContext.tsx";
+import { useModManagerContext } from "../../util/ModManagerContext";
 import { Sidebar } from "../Sidebar/Sidebar";
-import { ContentProvider } from "../ContentProvider/ContentProvider.tsx";
-import { SignIn } from "../SignIn/SignIn.tsx";
+import { ContentProvider } from "../ContentProvider/ContentProvider";
+import { SignIn } from "../SignIn/SignIn";
 
 function handleButtonPress() {
   invoke("init_mod_manager").catch((err) => {
@@ -11,7 +12,7 @@ function handleButtonPress() {
   });
 }
 
-function App() {
+export const App = () => {
   const { config, page } = useModManagerContext();
 
   if (config.discord_id === "") {
@@ -23,11 +24,9 @@ function App() {
     );
   }
   return (
-    <div className="bg-grid-small-white/[0.1] w-screen h-screen pt-16 flex flex-row text-white">
+    <div className="bg-grid-small-white/[0.1] gap-8 w-screen h-screen pt-16 flex flex-row text-white">
       <Sidebar />
       <ContentProvider />
     </div>
   );
-}
-
-export default App;
+};

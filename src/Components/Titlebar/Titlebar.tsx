@@ -1,3 +1,4 @@
+"use client";
 import { Window } from "@tauri-apps/api/window";
 import React from "react";
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-type ModList = {
+type ModDbList = {
   id: string;
   title: string;
   version: string;
@@ -9,7 +9,9 @@ type ModList = {
 };
 
 export const ModDatabase = () => {
-  const [mods, setMods] = useState<ModList[]>([]);
+  const [mods, setMods] = useState<ModDbList[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [showConnectionIssue, setShowConnectionIssue] = useState(false);
 
   useEffect(() => {
     const fetchMods = async () => {
@@ -18,15 +20,41 @@ export const ModDatabase = () => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
-        const data: ModList[] = await response.json();
+        const data: ModDbList[] = await response.json();
         setMods(data);
+        setLoading(false);
       } catch (err) {
         console.error("Error fetching mods:", err);
       }
     };
 
     fetchMods();
-  }, []);
+
+    const timer = setTimeout(() => {
+      if (loading) {
+        setShowConnectionIssue(true);
+      }
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, [loading]);
+
+  if (loading) {
+    return (
+      <div className="w-7/8 h-85v overflow-y-auto">
+        <h1 className="text-xl font-bold">ModDatabase</h1>
+        <div className="flex flex-col items-center justify-center h-70v gap-4 mt-8">
+          <div className="w-12 h-12 border-4 border-[#2dd4bf10] border-t-[#2dd4bf] rounded-full animate-spin" />
+          {showConnectionIssue && (
+            <p className="text-yellow-500 mt-4 text-center w-1/2">
+              Please check your connection. If you have internet, Taco's PC is
+              probably off.
+            </p>
+          )}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="w-7/8 h-85v overflow-y-auto">

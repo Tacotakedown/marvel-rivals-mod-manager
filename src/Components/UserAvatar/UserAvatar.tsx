@@ -1,3 +1,4 @@
+"use client";
 import { invoke } from "@tauri-apps/api/core";
 import React, { useState, useEffect } from "react";
 import { useOutsideClick } from "../../Hooks/useOutsideClick";

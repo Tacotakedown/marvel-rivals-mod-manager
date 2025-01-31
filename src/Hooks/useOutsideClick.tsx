@@ -1,3 +1,4 @@
+"use client";
 import { event } from "@tauri-apps/api";
 import { useEffect } from "react";
 

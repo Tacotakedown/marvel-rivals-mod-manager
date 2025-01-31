@@ -9,7 +9,7 @@
   src: local("Uncut Sans Regular"),
     url("../assets/fonts/Uncut-Sans-Variable.woff2")
       format("woff2 supports variations"),
-    url("./assets/Fonts/Uncut-Sans-Variable.woff2") format("woff2-variations");
+    url("../assets/Fonts/Uncut-Sans-Variable.woff2") format("woff2-variations");
 }
 
 html {

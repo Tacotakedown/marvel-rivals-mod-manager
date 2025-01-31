@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { useModManagerContext } from "../../util/ModManagerContext";
 import { Mods } from "../../Pages/Mods/Mods";

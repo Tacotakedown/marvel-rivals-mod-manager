@@ -1,3 +1,4 @@
+"use client";
 import type React from "react";
 import { useModManagerContext } from "../../util/ModManagerContext";
 import { DiscordAvatar } from "../UserAvatar/UserAvatar";
@@ -21,7 +22,7 @@ export const Sidebar: React.FC = () => {
   };
 
   return (
-    <div className="flex pt-5 flex-col md:w-60 w-1/3 justify-between items-center">
+    <div className="flex pt-5 flex-col md:w-60 w-1/3 justify-between items-center  bg-[#2dd4bf10]  shadow-[10px_7px_22px_#2dd4bf10] p-6">
       <div className="flex gap-4 flex-col md:w-60 w-full justify-start items-center">
         {pages.map((p, index) => (
           <button

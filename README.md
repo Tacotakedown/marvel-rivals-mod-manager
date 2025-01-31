@@ -1,7 +1,18 @@
-# Tauri + React + Typescript
+# Marvel Rivals Mod Manager
 
-This template should help get you started developing with Tauri, React and Typescript in Vite.
+A simple mod manager for Marvel Rivals Season 1
 
-## Recommended IDE Setup
+## Tech Stack
 
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+- Backend - `Rust`
+- Frontend - `NextJS`
+- [REST API + Database ](https://github.com/Tacotakedown/mod-manager-db) - `Rust & SQL`
+- [UE Pak file API](https://github.com/Tacotakedown/UeUnpack) - `C++`
+
+## Features
+
+- Rapidly unpack Marvel Rivals to prepare for mods
+- Symbolic links meaning you can launch the game vanilla at any time
+- Mods are cached on my NAS so people on LAN can avoid downloading from Nexus Mods
+- Mod Browser for mod cache
+- Should be able to handle all types of mods
