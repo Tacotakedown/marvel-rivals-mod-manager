@@ -8,6 +8,7 @@ A simple mod manager for Marvel Rivals Season 1
 - Frontend - `NextJS`
 - [REST API + Database ](https://github.com/Tacotakedown/mod-manager-db) - `Rust & SQL`
 - [UE Pak file API](https://github.com/Tacotakedown/UeUnpack) - `C++`
+- [Unpacked File Parser Lib](https://github.com/Tacotakedown/rivals-mod-parser) - `Go`
 
 ## Features
 
